@@ -28,16 +28,16 @@ iAmFrom()
 #Need to install psycopg2 in ubuntu
 import psycopg2
 
-conn = psycopg2.connect(database = "nmc", user="postgres", password="postgres", host = "127.0.0.1", port = "5432")
+conn = psycopg2.connect(database = "dbname", user="postgres", password="postgres", host = "127.0.0.1", port = "5432")
 
 print "Opened database successfully"
 
 cur = conn.cursor()
-cur.execute('''SET search_path to nmc''')
-cur.execute('''SELECT * FROM patient_registration LIMIT 1''')
+cur.execute('''SET search_path to schema''')
+cur.execute('''SELECT * FROM table LIMIT 1''')
 rows = cur.fetchall()
 
 for row in rows :
-    print "Mrno : "+row[0]
+    print "Record : "+row[0]
 
 conn.close()
